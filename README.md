@@ -6,7 +6,7 @@ API endpoint that extracts relevant restaurant information from new restaurants 
 pip install -r requirements.txt
 ```
 ```
-python app.py
+python api.py
 ```
 # Demo
 ```
