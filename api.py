@@ -60,7 +60,7 @@ async def retrieve_restaurants(job_id, location):
         jobs[job_id]["status"]="parsing"
 
         # Asynchronously extract restaurant information with LLM
-        tasks = [extract_restaurant_information(restaurant) for restaurant in found_restaurants if restaurant['isBusinessAccount']]
+        tasks = [extract_restaurant_information(restaurant) for restaurant in found_restaurants if 'isBusinessAccount' in restaurant and restaurant['isBusinessAccount']]
         results = await asyncio.gather(*tasks)
 
         
