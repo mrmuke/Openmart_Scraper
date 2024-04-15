@@ -53,7 +53,7 @@ async def extract_restaurant_information(restaurant):
     full_name = restaurant['fullName']
     business_url = restaurant['externalUrl'] if 'externalUrl' in restaurant else None
 
-    # Rate limit handling
+    # Rate limit handling and extraction prompt
     while True:
         try:
             response =  await asyncio.to_thread(client.chat.completions.create,
@@ -93,7 +93,7 @@ async def extract_restaurant_information(restaurant):
         print("bad json")
         print(response)
 
-    
+    # Try to find opening date in website metadata if not found on instagram
     try:
         if(response_dict["date_opened"]=="N/A" and business_url!=None):
             website_publish_date = find_date(business_url)
