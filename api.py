@@ -51,7 +51,7 @@ async def retrieve_restaurants(job_id, location):
                 "resultsLimit": 3,
                 "resultsType": "posts",
                 "search": f"Restaurant in {location}",
-                "searchLimit": 250,
+                "searchLimit": 50,
                 "searchType": "user"
                 }
         )
@@ -63,10 +63,10 @@ async def retrieve_restaurants(job_id, location):
         results = await asyncio.gather(*tasks)
 
         
-        # Filter out restaurants that opened within the last year and have a valid opening date
+        # Filter out restaurants with an "N/A" name or invalid opening date or opened further back than the last year
         filtered_restaurants = [
             restaurant for restaurant in results
-            if restaurant['date_opened'] != "N/A" and
+            if restaurant['name']!="N/A" and restaurant['date_opened'] != "N/A" and
             datetime.now() - datetime.strptime(restaurant['date_opened'], '%Y-%m-%d') <= timedelta(days=365)
         ]
         # Sort by opening date
