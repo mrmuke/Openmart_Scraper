@@ -33,7 +33,7 @@ class Location(BaseModel):
     location: str
 
 @app.post("/restaurants/")
-def create_restaurant_job(location_data: Location):
+async def create_restaurant_job(location_data: Location):
     job_id = str(uuid4())
     jobs[job_id] = {"status": "scraping"}
     asyncio.create_task(retrieve_restaurants(job_id, location_data.location))
