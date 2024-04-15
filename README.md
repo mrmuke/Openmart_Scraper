@@ -2,6 +2,7 @@
 A FastAPI endpoint to retrieve the newest opened restaurants in a given location.
 
 # Running Locally
+Create a .env file with APIFY_API_KEY and OPENAI_API_KEY.
 ```
 pip install -r requirements.txt
 ```
