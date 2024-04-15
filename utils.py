@@ -102,7 +102,10 @@ async def extract_restaurant_information(restaurant):
     except:
         pass
 
-    response_dict['social_media_post_url'] = restaurant['latestPosts'][0]['url']
-
+    if(len(restaurant['latestPosts'])>0):
+        response_dict['social_media_post_url'] = restaurant['latestPosts'][0]['url']
+    else:
+        response_dict['social_media_post_url']="N/A"
+        
     return response_dict
     
