@@ -11,7 +11,7 @@ python api.py
 ```
 * Note: Currently scraped results are limited to 50 to reduce concurrent load on GPT, but can be extended to up to 250 for more high-quality results
 
-# Demo
+# Demo *EC2 stopped
 ```
 curl --location 'http://3.128.255.241/restaurants/' \
 --header 'Content-Type: application/json' \
